@@ -35,3 +35,5 @@ print(f"Unique Filename: {unique_filename}")
 
 # Save the plot to an image file within the notebook
 plt.savefig(unique_filename)
+
+#git@github.com:zhoelzle/PyPlotGenerator.git
