@@ -11,21 +11,24 @@ if __name__ == "__main__":
 
 
 def generate_unique_filename(base_filename):
-    # Check if the file exists
-    if os.path.exists(base_filename):
-        # Split the filename and extension
-        name, extension = os.path.splitext(base_filename)
+    try:
+        # Check if the file exists
+        if os.path.exists(base_filename):
+            # Split the filename and extension
+            name, extension = os.path.splitext(base_filename)
 
-        # Try incrementing the number until finding a unique filename
-        count = 1
-        while os.path.exists(f"{name}{count}{extension}"):
-            count += 1
+            # Try incrementing the number until finding a unique filename
+            count = 1
+            while os.path.exists(f"{name}{count}{extension}"):
+                count += 1
 
-        # Return the new unique filename
-        return f"{name}{count}{extension}"
-    else:
-        # If the file doesn't exist, return the original filename
-        return base_filename
+            # Return the new unique filename
+            return f"{name}{count}{extension}"
+        else:
+            # If the file doesn't exist, return the original filename
+            return base_filename
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 # Example usage
 filename = 'plot.png'
