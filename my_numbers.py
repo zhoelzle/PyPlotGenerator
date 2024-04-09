@@ -4,25 +4,31 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def train_and_plot_graph():
-    # Generate some data
-    x_data = np.linspace(-5, 5, 100)
-    y_data = 2 * x_data + 1 + np.random.normal(0, 1, size=len(x_data))
 
-    # Define input tensor using tf.keras.Input
-    x = tf.keras.Input(shape=(1,), dtype=tf.float32, name='x')
+    try:
+        # Generate some data
+        x_data = np.linspace(-5, 5, 100)
+        y_data = 2 * x_data + 1 + np.random.normal(0, 1, size=len(x_data))
 
-    # Define variables for slope and intercept
-    slope = tf.Variable(1.0, dtype=tf.float32, name='slope')
-    intercept = tf.Variable(0.0, dtype=tf.float32, name='intercept')
+        # Define input tensor using tf.keras.Input
+        x = tf.keras.Input(shape=(1,), dtype=tf.float32, name='x')
 
-    # Define the linear model using functional API
-    y_pred = slope * x + intercept
+        # Define variables for slope and intercept
+        slope = tf.Variable(1.0, dtype=tf.float32, name='slope')
+        intercept = tf.Variable(0.0, dtype=tf.float32, name='intercept')
 
-    # Define the loss function (mean squared error)
-    loss = tf.reduce_mean(tf.square(y_data - y_pred), name='loss')
+        # Define the linear model using functional API
+        y_pred = slope * x + intercept
 
-    # Define the optimizer
-    optimizer = tf.optimizers.SGD(learning_rate=0.01)
+        # Define the loss function (mean squared error)
+        loss = tf.reduce_mean(tf.square(y_data - y_pred), name='loss')
+
+        # Define the optimizer
+        optimizer = tf.optimizers.SGD(learning_rate=0.01)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
 
     # Training step using tf.GradientTape
     def train_step(x, y):
