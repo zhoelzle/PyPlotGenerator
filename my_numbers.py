@@ -7,7 +7,7 @@ def train_and_plot_graph():
 
     try:
         # Generate some data
-        x_data = np.linspace(-5, 5, 100)
+        x_data = np.linspace(1, 5, 100)
         y_data = 2 * x_data + 1 + np.random.normal(0, 1, size=len(x_data))
 
         # Define input tensor using tf.keras.Input
@@ -25,8 +25,6 @@ def train_and_plot_graph():
 
         # Define the optimizer
         optimizer = tf.optimizers.SGD(learning_rate=0.01)
-
-
 
 
         # Training step using tf.GradientTape
@@ -50,8 +48,8 @@ def train_and_plot_graph():
         # Plot the data and the linear regression line
         plt.scatter(x_data, y_data, label='Data points')
         plt.plot(x_data, final_slope * x_data + final_intercept, color='red', label='Linear Regression')
-        plt.xlabel('X')
-        plt.ylabel('Y')
+        plt.xlabel('X: Product Rating')
+        plt.ylabel('Y: Customer Satisfaction Score')
         plt.legend()
         plt.show()
 
