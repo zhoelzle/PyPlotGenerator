@@ -11,6 +11,7 @@ if __name__ == "__main__":
 
 
 def generate_unique_filename(base_filename):
+
     try:
         # Check if the file exists
         if os.path.exists(base_filename):
@@ -27,16 +28,19 @@ def generate_unique_filename(base_filename):
         else:
             # If the file doesn't exist, return the original filename
             return base_filename
+
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Example usage
-filename = 'plot.png'
-unique_filename = generate_unique_filename(filename)
-print(f"Original Filename: {filename}")
-print(f"Unique Filename: {unique_filename}")
+try:
+    # Call generate filename function, print original, unique filenames
+    filename = 'plot.png'
+    unique_filename = generate_unique_filename(filename)
+    print(f"Original Filename: {filename}")
+    print(f"Unique Filename: {unique_filename}")
 
-# Save the plot to an image file within the notebook
-plt.savefig(unique_filename)
+    # Save the plot to an image file within the notebook
+    plt.savefig(unique_filename)
 
-#new-feature test
+except Exception as e:
+    print(f"An error occurred: {e}")
